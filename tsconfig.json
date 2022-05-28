@@ -1,0 +1,12 @@
+{
+  "extends": "./configs/ts/base.tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "allowJs": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src"
+  ]
+}

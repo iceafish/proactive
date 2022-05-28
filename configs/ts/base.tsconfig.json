@@ -17,7 +17,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "ES2017",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": [
       "ES2017",
       "ES2020.Promise",

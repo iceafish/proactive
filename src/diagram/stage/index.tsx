@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Stage, Layer, Rect, Circle } from 'react-konva';
 
@@ -18,4 +18,4 @@ export const App: FC<IProps> = ({ draggable }) => {
       </Layer>
     </Stage>
   );
-}
+};

@@ -1,6 +1,6 @@
 import { Container, interfaces } from 'inversify';
-import { DIContainerCreateHelper } from '../type';
-import { Module } from './module';
+import { getServiceMetadata, getUnitModuleMetadata } from './helper';
+import type { Constructor, DIContainerCreateHelper } from './type';
 
 /**
  * 用于声明、创建
@@ -22,27 +22,43 @@ export abstract class DI {
    * @param modules
    * @returns
    */
-  public static load(...modules: Module[]): DIContainerCreateHelper {
-    const classMap: Map<string, unknown> = DI.resolveModuleInfo(modules);
+  public static load(...modules: Constructor[]): DIContainerCreateHelper {
+    const ctors = DI.resolveModuleInfo(modules);
 
     return {
-      createContainer: (options) => {
-        const container = new Container(options ?? DI.DefaultContainerOptions);
+      createContainer: (options = {}) => {
+        const container = new Container({
+          ...DI.DefaultContainerOptions,
+          ...options,
+        });
+
+        ctors.forEach((it) => {
+          const serviceMetadata = getServiceMetadata(it);
+          serviceMetadata.forEach((service) => {
+            service.constraint(container.bind.bind(container), it);
+          });
+        });
+
         return container;
       },
     };
   }
 
-  private static resolveModuleInfo(modules: Module[]): Map<string, unknown> {
-    return new Map();
+  /**
+   * TODO Fix 这里的逻辑先简单写，后面要改
+   *
+   * @param modules
+   * @returns
+   */
+  private static resolveModuleInfo(modules: Constructor[]): Constructor[] {
+    return modules.reduce<Constructor[]>((prev, current) => {
+      // 这里没有考虑引入模块
+      const unitModuleOption = getUnitModuleMetadata(current)!;
+      if (!unitModuleOption) {
+        throw new Error(`unit module: ${current.name} metadata not found`);
+      }
+
+      return [...unitModuleOption.providers, ...prev];
+    }, []);
   }
 }
-// 1
-// @service
-
-// 2
-// createContainer env
-// container.bind(ID).to(Classz);
-
-// 3
-// container.get()

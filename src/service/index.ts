@@ -1,5 +1,5 @@
 import { inject } from 'inversify';
-import { createServiceSymbol, service, unitModule } from '../core/di';
+import { createServiceSymbol, service, unitModule } from '@core/di';
 
 export interface IBarService {
   value(): string;

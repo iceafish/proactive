@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
-import { DI } from '../../core/di';
-import { FooModule, IFooService } from '../../service';
+import { DI } from '@core/di';
+import { FooModule, IFooService } from '@service';
 
 export interface Props {}
 

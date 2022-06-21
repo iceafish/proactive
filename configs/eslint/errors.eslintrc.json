@@ -16,10 +16,7 @@
       "always"
     ],
     "@typescript-eslint/type-annotation-spacing": "error",
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
+    "arrow-body-style": "warn",
     "arrow-parens": [
       "error",
       "always"

@@ -4,7 +4,15 @@
     "composite": true,
     "allowJs": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "src",
+    "paths": {
+      "@core": ["core"],
+      "@core/*": ["core/*"],
+      "@common/*": ["common/*"],
+      "@service": ["service"],
+      "@component/*": ["component/*"]
+    }
   },
   "include": [
     "src"

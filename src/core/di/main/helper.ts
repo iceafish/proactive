@@ -4,7 +4,7 @@ import {
   DI_UNIT_MODULE_METADATA_KEY,
 } from './constant';
 
-import type { DeclareMetadata, UnitModuleOptions } from './type';
+import type { DeclareMetadata, UnitModuleOptions } from '../type';
 
 export const isAlreadyDecorated = (target: Object): boolean =>
   Reflect.hasOwnMetadata(METADATA_KEY.PARAM_TYPES, target);

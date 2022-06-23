@@ -1,6 +1,6 @@
 import { Container, interfaces } from 'inversify';
 import { getServiceMetadata, getUnitModuleMetadata } from './helper';
-import type { Constructor, DIContainerCreateHelper } from './type';
+import type { Constructor, DIContainerCreateHelper } from '../type';
 
 /**
  * 用于声明、创建

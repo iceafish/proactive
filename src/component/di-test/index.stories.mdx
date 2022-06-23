@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
-import { Container } from './Container';
+import { Container, FooClassComponent } from './Container';
 
 <Meta title="DI Test" />
 
@@ -12,4 +12,5 @@ export const Template = (args) => <Container {...args} />
     args={{}}>
     {Template.bind({})}
   </Story>
+  <FooClassComponent />
 </Canvas>

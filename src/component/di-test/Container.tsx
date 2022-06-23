@@ -1,5 +1,5 @@
-import { FC, useEffect } from 'react';
-import { DI } from '@core/di';
+import { Component, FC, ReactNode, useEffect } from 'react';
+import { DI, fooInject } from '@core/di';
 import { FooModule, IFooService } from '@service';
 
 export interface Props {}
@@ -14,3 +14,13 @@ export const Container: FC<Props> = () => {
 
   return null;
 };
+
+export class FooClassComponent extends Component {
+  @fooInject(IFooService)
+  private fooService: IFooService;
+
+  override render(): ReactNode {
+    console.log(this.fooService);
+    return null;
+  }
+}

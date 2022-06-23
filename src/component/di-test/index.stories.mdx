@@ -4,13 +4,10 @@ import { Container, FooClassComponent } from './Container';
 
 <Meta title="DI Test" />
 
-export const Template = (args) => <Container {...args} />
-
 <Canvas>
-  <Story
-    name="Example"
-    args={{}}>
-    {Template.bind({})}
+  <Story name="Example" args={{}}>
+    <Container>
+      <FooClassComponent />
+    </Container>
   </Story>
-  <FooClassComponent />
 </Canvas>

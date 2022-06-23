@@ -1,5 +1,7 @@
 import type { interfaces } from 'inversify';
-import type { TypedSymbol } from '../../../common/type';
+import type { TypedSymbol } from '@common/type';
+
+export type DIContainerContextValue = Container | undefined;
 
 export interface ClassType {}
 
@@ -26,10 +28,7 @@ export interface DIContainerCreateHelper {
   createContainer(options?: {}): Container;
 }
 
-export interface DeclareMetadata<
-  T = unknown,
-  TFunction extends Function = Function
-> {
+export interface DeclareMetadata<T = unknown, TFunction extends Function = Function> {
   constraint: (
     bind: interfaces.Bind,
     bindTarget: Constructor

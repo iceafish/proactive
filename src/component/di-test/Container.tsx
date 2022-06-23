@@ -1,22 +1,19 @@
-import { Component, FC, ReactNode, useEffect } from 'react';
-import { DI, fooInject } from '@core/di';
+import { Component, FC, PropsWithChildren, ReactNode, useMemo } from 'react';
+import { DI, DIContainerContext, inject } from '@core/di';
 import { FooModule, IFooService } from '@service';
 
 export interface Props {}
 
-export const Container: FC<Props> = () => {
-  useEffect(() => {
-    const ctor = DI.load(FooModule).createContainer();
+export const Container: FC<PropsWithChildren<Props>> = ({ children }) => {
+  const container = useMemo(() => DI.load(FooModule).createContainer(), []);
 
-    ctor.get(IFooService).say();
-    // console.log('=== load container: ', ctor);
-  }, []);
-
-  return null;
+  return (
+    <DIContainerContext.Provider value={container}>{children}</DIContainerContext.Provider>
+  );
 };
 
 export class FooClassComponent extends Component {
-  @fooInject(IFooService)
+  @inject(IFooService)
   private fooService: IFooService;
 
   override render(): ReactNode {

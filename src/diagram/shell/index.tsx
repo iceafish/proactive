@@ -1,13 +1,13 @@
 import { Component, PropsWithChildren, ReactNode } from 'react';
 import { IFooService } from '@service';
-import { fooInject } from '@core/di';
+import { inject } from '@core/di';
 
 interface Props {}
 
 interface States {}
 
 export class Shell extends Component<PropsWithChildren<Props>, States> {
-  @fooInject(IFooService)
+  @inject(IFooService)
   private fooService: IFooService;
 
   override render(): ReactNode {

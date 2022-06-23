@@ -109,7 +109,6 @@
           ],
           "typedef": [
             true,
-            "call-signature",
             "property-declaration"
           ],
           "whitespace": [

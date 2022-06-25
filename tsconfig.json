@@ -11,6 +11,8 @@
       "@core/*": ["core/*"],
       "@common/*": ["common/*"],
       "@service": ["service"],
+      "@protocol": ["protocol"],
+      "@protocol/*": ["protocol/*"],
       "@component/*": ["component/*"]
     }
   },

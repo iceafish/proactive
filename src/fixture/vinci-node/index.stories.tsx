@@ -1,19 +1,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { FooStage } from './index';
+import { FooVinciNode } from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Fixtures/Vinci',
-  component: FooStage,
+  component: FooVinciNode,
   argTypes: {},
-} as ComponentMeta<typeof FooStage>;
+} as ComponentMeta<typeof FooVinciNode>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof FooStage> = (args) => <FooStage {...args} />;
+const Template: ComponentStory<typeof FooVinciNode> = (args) => <FooVinciNode {...args} />;
 
-export const Editor = Template.bind({});
+export const Node = Template.bind({});
 
-Editor.args = {
-  draggable: true,
-};
+Node.args = {};

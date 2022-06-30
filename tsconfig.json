@@ -10,10 +10,12 @@
       "@core": ["core"],
       "@core/*": ["core/*"],
       "@common/*": ["common/*"],
-      "@service": ["service"],
       "@protocol": ["protocol"],
       "@protocol/*": ["protocol/*"],
-      "@component/*": ["component/*"]
+      "@vinci": ["vinci"],
+      "@vinci/*": ["vinci/*"],
+      "@component/*": ["component/*"],
+      "@container/*": ["container/*"]
     }
   },
   "include": [

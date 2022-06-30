@@ -1,18 +1,19 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Stage } from './index';
+import { FooStage } from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Diagram/Stage',
-  component: Stage,
+  title: 'Fixtures/Editor',
+  component: FooStage,
   argTypes: {},
-} as ComponentMeta<typeof Stage>;
+} as ComponentMeta<typeof FooStage>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Stage> = (args) => <Stage {...args} />;
+const Template: ComponentStory<typeof FooStage> = (args) => <FooStage {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const MainStage = Template.bind({});
+
+MainStage.args = {
   draggable: true,
 };

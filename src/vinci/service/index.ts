@@ -1,11 +1,13 @@
-import { IVinciStageManager } from '../contract';
-import { ReactNode, createElement } from 'react';
-import { Stage } from '../container';
+import { createElement, ReactNode } from 'react';
+
 import { service } from '@core/di';
 
-@service(IVinciStageManager)
-export class VinciStageManager implements IVinciStageManager {
-  render(draggable: boolean): ReactNode {
+import { IStageManager } from '../contract';
+import { Stage } from '../container';
+
+@service(IStageManager)
+export class StageManager implements IStageManager {
+  render(draggable?: boolean): ReactNode {
     return createElement(Stage, { draggable });
   }
 }

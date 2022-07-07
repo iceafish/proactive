@@ -1,5 +1,5 @@
-import type { interfaces } from 'inversify';
 import type { TypedSymbol } from '@common/type';
+import type { interfaces } from 'inversify';
 
 export type DIContainerContextValue = Container | undefined;
 
@@ -22,6 +22,7 @@ export interface ClassType {}
 
 export interface Container {
   get<T>(serviceIdentifier: TypedSymbol<T>): T;
+  isBound<T>(serviceIdentifier: TypedSymbol<T>): boolean;
 }
 
 export interface DIContainerCreateHelper {

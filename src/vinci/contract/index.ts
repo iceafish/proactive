@@ -1,1 +1,2 @@
-export * from './vinci-stage-manager';
+export * from './stage-manager';
+export * from './navigation-bar';

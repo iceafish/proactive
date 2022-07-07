@@ -1,6 +1,8 @@
 import { Component, FC, PropsWithChildren, ReactNode, useMemo } from 'react';
+
 import { DI, DIContainerContext, inject } from '@core/di';
-import { IVinciStageManager } from '@vinci';
+import { IStageManager } from '@vinci';
+
 import { FooModule } from './foo-module';
 
 interface Props {
@@ -16,11 +18,11 @@ const Container: FC<PropsWithChildren<{}>> = ({ children }) => {
 };
 
 class StageContainer extends Component<Props> {
-  @inject(IVinciStageManager)
-  private vinciStageManager: IVinciStageManager;
+  @inject(IStageManager)
+  private stageManager: IStageManager;
 
   override render(): ReactNode {
-    return this.vinciStageManager.render(this.props.draggable);
+    return this.stageManager.render(this.props.draggable);
   }
 }
 

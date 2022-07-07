@@ -1,6 +1,7 @@
-import { createServiceSymbol, service, unitModule } from '@core/di';
-import { VinciStageManager } from '@vinci';
 import { inject } from 'inversify';
+
+import { createServiceSymbol, service, unitModule } from '@core/di';
+import { StageManager } from '@vinci';
 
 export interface IBarService {
   value(): string;
@@ -32,6 +33,6 @@ export class Foo implements IFooService {
 
 @unitModule({
   name: 'FooModule',
-  providers: [Foo, Bar, VinciStageManager],
+  providers: [Foo, Bar, StageManager],
 })
 export class FooModule {}

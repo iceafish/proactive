@@ -1,0 +1,15 @@
+.vinci-shell {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.navbar {
+    flex: 0;
+}
+
+.body {
+    flex: 1;
+    padding: 8px;
+    background-color: aquamarine;
+}

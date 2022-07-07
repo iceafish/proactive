@@ -1,14 +1,15 @@
-import { TypedSymbol } from '@common/type';
-import { isReactClassComponent } from '@common/util';
-import { decorate, injectable, inject as inversifyInject } from 'inversify';
 import {
   defineServiceMetadata,
   defineUnitModuleMetadata,
   getServiceMetadata,
   isAlreadyDecorated,
+  getDecoratedMetadataHelper,
 } from './helper';
 import type { DeclareMetadata, DIContainerContextValue, UnitModuleOptions } from '../type';
+import { decorate, injectable, inject as inversifyInject } from 'inversify';
+import { isReactClassComponent } from '@common/util';
 import { makeSureAcceptContextType } from '../react';
+import { TypedSymbol } from '@common/type';
 import { ComponentClass } from 'react';
 
 export const createServiceSymbol: <T>(id: string) => TypedSymbol<T> = (id) => Symbol.for(id);
@@ -50,10 +51,16 @@ export const inject: <T>(id: TypedSymbol<T>) => PropertyDecorator =
       Object.defineProperty(target, propertyKey, {
         enumerable: true,
         get() {
+          const metadataHelper = getDecoratedMetadataHelper(target.constructor, propertyKey);
           const container = <DIContainerContextValue>this.context;
           if (!container) {
             throw new Error('DI inject 过程发生致命错误，容器未找到');
           }
+
+          if (metadataHelper.isOptional() && !container?.isBound(id)) {
+            return undefined;
+          }
+
           return container.get(id);
         },
       });
@@ -78,3 +85,5 @@ export const getContributions: <T>(id: TypedSymbol<T>) => ParameterDecorator =
 export const unitModule: (options: UnitModuleOptions) => ClassDecorator =
   (options) => (target) =>
     defineUnitModuleMetadata(options, target);
+
+export { optional } from 'inversify';

@@ -1,8 +1,9 @@
-import { Circle, Layer, Rect, Stage as KonvaStage } from 'react-konva';
+import { Circle, Layer, Rect, RegularPolygon, Stage as KonvaStage } from 'react-konva';
 import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
 import { __CORE_VERSION__ } from '@core';
 
+import { ContextMenu } from '../../component';
 import { Shell } from '../shell';
 
 export interface IProps {
@@ -30,9 +31,22 @@ export const Stage: FC<IProps> = ({ draggable }) => {
       <KonvaStage width={width} height={window.innerHeight}>
         <Layer>
           <Rect width={50} height={50} fill="red" draggable={draggable} />
-          <Circle x={200} y={200} stroke="black" radius={50} />
+          <RegularPolygon
+            draggable
+            x={80}
+            y={120}
+            sides={3}
+            rotationDeg={90}
+            radius={24}
+            fill="#00D2FF"
+            stroke="black"
+            strokeWidth={1}
+            lineJoin="round"
+          />
+          <Circle x={200} y={200} stroke="black" strokeWidth={1} radius={16} fill="#00D2FF" />
         </Layer>
       </KonvaStage>
+      <ContextMenu x={0} y={0} visible={false} />
     </Shell>
   );
 };

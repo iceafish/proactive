@@ -2,8 +2,10 @@ import './index.css';
 
 import { Component, PropsWithChildren, ReactNode } from 'react';
 
-import { inject, optional } from '@core/di';
+import { PropertiesPanel } from '@vinci/component/properties-panel';
+import { ResourcePanel } from '@vinci/component/resource-panel';
 import { INavigationBar } from '@vinci/contract';
+import { inject, optional } from '@core/di';
 
 interface Props {}
 
@@ -19,7 +21,15 @@ export class Shell extends Component<PropsWithChildren<Props>, States> {
     return (
       <div className="vinci-shell">
         {this.navigationBar && <div className="navbar">{this.navigationBar.render()}</div>}
-        <div className="body">{children}</div>
+        <div className="body">
+          <div className="left-res">
+            <ResourcePanel />
+          </div>
+          <div className="main-stage">{children}</div>
+          <div className="right-props">
+            <PropertiesPanel />
+          </div>
+        </div>
       </div>
     );
   }

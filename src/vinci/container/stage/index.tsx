@@ -16,11 +16,13 @@ export const Stage: FC<IProps> = ({ draggable }) => {
   }, []);
 
   const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
 
   useLayoutEffect(() => {
-    const ref = document.querySelector('.body')!;
+    const ref = document.querySelector('.main-stage')!;
     const styles = getComputedStyle(ref, null);
     setWidth(ref.clientWidth - parseFloat(styles.getPropertyValue('padding')) * 2);
+    setHeight(ref.clientHeight - parseFloat(styles.getPropertyValue('padding')) * 2);
   }, []);
 
   return (
@@ -28,7 +30,7 @@ export const Stage: FC<IProps> = ({ draggable }) => {
     // Layer - is an actual 2d canvas element, so you can have several layers inside the stage
     // Rect and Circle are not DOM elements. They are 2d shapes on canvas
     <Shell>
-      <KonvaStage width={width} height={window.innerHeight}>
+      <KonvaStage width={width} height={height}>
         <Layer>
           <Rect width={50} height={50} fill="red" draggable={draggable} />
           <RegularPolygon

@@ -1,15 +1,36 @@
 .vinci-shell {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.navbar {
+.vinci-shell .navbar {
     flex: 0;
 }
 
-.body {
+.vinci-shell .body {
+    height: 100%;
     flex: 1;
-    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vinci-shell .body .left-res {
+    height: 100%;
+    flex: 0 240px;
+}
+
+.vinci-shell .body .main-stage {
+    height: 100%;
+    flex: 1;
+    /* padding: 8px; */
     background-color: aquamarine;
+}
+
+.vinci-shell .body .right-props {
+    height: 100%;
+    flex: 0 240px;
 }

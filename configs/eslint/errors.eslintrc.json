@@ -16,10 +16,7 @@
       "always"
     ],
     "@typescript-eslint/type-annotation-spacing": "error",
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
+    "arrow-body-style": "warn",
     "arrow-parens": [
       "error",
       "always"
@@ -50,7 +47,6 @@
       }
     ],
     "no-new-wrappers": "error",
-    "no-null/no-null": "error",
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": [
       "error",
@@ -113,7 +109,6 @@
           ],
           "typedef": [
             true,
-            "call-signature",
             "property-declaration"
           ],
           "whitespace": [

@@ -5,14 +5,12 @@ module.exports = {
     './configs/eslint/base.eslintrc.json',
     './configs/eslint/warnings.eslintrc.json',
     './configs/eslint/errors.eslintrc.json',
-    './configs/eslint/xss.eslintrc.json'
+    './configs/eslint/xss.eslintrc.json',
+    'plugin:storybook/recommended',
   ],
-  ignorePatterns: [
-    '**/{node_modules,lib}',
-    'plugins'
-  ],
+  ignorePatterns: ['**/{node_modules,lib}', 'plugins'],
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: 'tsconfig.json'
-  }
+    project: 'tsconfig.json',
+  },
 };

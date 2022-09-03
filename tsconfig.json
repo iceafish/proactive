@@ -4,7 +4,20 @@
     "composite": true,
     "allowJs": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "src",
+    "paths": {
+      "@core": ["core"],
+      "@core/*": ["core/*"],
+      "@common/*": ["common/*"],
+      "@shared": ["shared"],
+      "@protocol": ["protocol"],
+      "@protocol/*": ["protocol/*"],
+      "@vinci": ["vinci"],
+      "@vinci/*": ["vinci/*"],
+      "@component/*": ["component/*"],
+      "@container/*": ["container/*"]
+    }
   },
   "include": [
     "src"

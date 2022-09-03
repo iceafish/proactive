@@ -22,6 +22,7 @@ export class Shell extends Component<PropsWithChildren<Props>, States> {
       <div className="vinci-shell">
         {this.navigationBar && <div className="navbar">{this.navigationBar.render()}</div>}
         <div className="body">
+          {/* TODO yingjie 这里需要 底部 console，在全局 console 能力建立以后 */}
           <div className="left-res">
             <ResourcePanel />
           </div>

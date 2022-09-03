@@ -1,16 +1,18 @@
+import { decorate, injectable, inject as inversifyInject } from 'inversify';
+import { ComponentClass } from 'react';
+
+import { TypedSymbol } from '@common/type';
+import { isReactClassComponent } from '@common/util';
+
+import { makeSureAcceptContextType } from '../react';
+import type { DIContainerContextValue, DeclareMetadata, UnitModuleOptions } from '../type';
 import {
   defineServiceMetadata,
   defineUnitModuleMetadata,
+  getDecoratedMetadataHelper,
   getServiceMetadata,
   isAlreadyDecorated,
-  getDecoratedMetadataHelper,
 } from './helper';
-import type { DeclareMetadata, DIContainerContextValue, UnitModuleOptions } from '../type';
-import { decorate, injectable, inject as inversifyInject } from 'inversify';
-import { isReactClassComponent } from '@common/util';
-import { makeSureAcceptContextType } from '../react';
-import { TypedSymbol } from '@common/type';
-import { ComponentClass } from 'react';
 
 export const createServiceSymbol: <T>(id: string) => TypedSymbol<T> = (id) => Symbol.for(id);
 
@@ -22,7 +24,7 @@ export const service: <T>(id: TypedSymbol<T>, force?: boolean) => ClassDecorator
     if (redecorateWithInject === true && isDecorated === false) {
       decorate(injectable(), target);
     } else if (redecorateWithInject === true && isDecorated === true) {
-      // Do nothing
+      // pass
     } else {
       try {
         decorate(injectable(), target);
@@ -42,6 +44,9 @@ export const service: <T>(id: TypedSymbol<T>, force?: boolean) => ClassDecorator
 
     defineServiceMetadata([currentMetadata, ...getServiceMetadata(target)], target);
   };
+
+export const contribution: (...ids: TypedSymbol<unknown>[]) => ClassDecorator =
+  (ids) => (target) => {};
 
 export const inject: <T>(id: TypedSymbol<T>) => PropertyDecorator =
   (id) => (target, propertyKey) => {
@@ -75,9 +80,6 @@ export const inject: <T>(id: TypedSymbol<T>) => PropertyDecorator =
 
     return inversifyInject(id)(target, propertyKey);
   };
-
-export const contribution: (...ids: TypedSymbol<unknown>[]) => ClassDecorator =
-  (ids) => (target) => {};
 
 export const getContributions: <T>(id: TypedSymbol<T>) => ParameterDecorator =
   () => (target, propertyKey, parameterIndex) => {};

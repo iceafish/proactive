@@ -23,7 +23,7 @@ class StageContainer extends Component {
 }
 
 export const FooVinciNode: FC = () => (
-  <div style={{ width: '100%', height: 400 }}>
+  <div style={{ width: '100%', height: 650 }}>
     <Container>
       <StageContainer />
     </Container>

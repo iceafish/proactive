@@ -1,4 +1,4 @@
-import { FunctorSignature } from './functor';
+import { FunctorSignature } from '@protocol/contract';
 
 export interface ChainArguments {
   type: 'callback' | 'string' | 'number' | 'boolean' | 'Object';

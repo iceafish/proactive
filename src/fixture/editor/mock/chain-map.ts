@@ -1,4 +1,4 @@
-import { ChainMap } from '@protocol/type';
+import { ChainMap } from '@protocol/chain';
 
 export const MockChain: ChainMap = {
   entry: {

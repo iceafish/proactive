@@ -8,7 +8,7 @@
     "noImplicitOverride": true,
     "noEmitOnError": false,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "strictNullChecks": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

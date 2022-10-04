@@ -15,6 +15,7 @@
       "@protocol/*": ["protocol/*"],
       "@vinci": ["vinci"],
       "@vinci/*": ["vinci/*"],
+      "@component": ["component"],
       "@component/*": ["component/*"],
       "@container/*": ["container/*"]
     }

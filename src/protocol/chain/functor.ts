@@ -1,4 +1,4 @@
-export type FunctorSignature = string[];
+import { FunctorSignature } from '@protocol/contract';
 
 export interface ChainArgumentsType {}
 
